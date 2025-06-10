@@ -160,9 +160,11 @@ Analyze a video URL for spoken English accent and transcript summary.
 
 ## Environment Variables
 
-| Variable         | Description                         | Required |
-| ---------------- | ----------------------------------- | -------- |
-| `GOOGLE_API_KEY` | API key for Google Gemini Pro model | Yes      |
+| Variable | Description | Required |
+| --- | --- | --- |
+| `GOOGLE_API_KEY` | API key for Google Gemini Pro model | Yes |
+| `LANGSMITH_API_KEY` | API key for LangSmith | Yes |
+| `HUGGINGFACE_TOKEN` | Token for HuggingFace | Yes |
 
 ---
 
@@ -205,4 +207,4 @@ This project is licensed under the [MIT License](LICENSE).
 ```
 
 
-<div align="center"> <img src="https://komarev.com/ghpvc/?username=halilibr&color=blue&label=VISITORS" /> </div>
+<div align="center"> <img src="https://komarev.com/ghpvc/?username=accent-analyzer&color=blue&label=VISITORS" /> </div>
