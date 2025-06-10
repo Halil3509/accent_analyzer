@@ -6,5 +6,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      GOOGLE_API_KEY: "AIzaSyCVtmS6Z-MGRbfiwKZleGDj4_vy1N3eDaQ"
+      GOOGLE_API_KEY: "your_key"
+      HUGGINGFACE_TOKEN: "your_key"
+      LANGSMITH_API_KEY: "your_key"
     restart: unless-stopped
