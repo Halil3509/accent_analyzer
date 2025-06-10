@@ -6,5 +6,5 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - GOOGLE_API_KEY=${GOOGLE_API_KEY}  # Pass your Google API key via .env or environment
+      GOOGLE_API_KEY: "AIzaSyCVtmS6Z-MGRbfiwKZleGDj4_vy1N3eDaQ"
     restart: unless-stopped
