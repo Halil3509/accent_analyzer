@@ -20,7 +20,7 @@ async def analyze_video(request: VideoRequest):
             audio_path = os.path.join(tmpdir, "audio.wav")
 
             logger.info("Downloading video...")
-            if "youtube.com" in request.video_url or "youtu.be" in request.video_url:
+            if "youtube.com" in request.video_url or "youtube" in request.video_url:
                 download_youtube_video(request.video_url, video_path)
             else:
                 await download_video(request.video_url, video_path)

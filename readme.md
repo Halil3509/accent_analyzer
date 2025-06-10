@@ -69,6 +69,8 @@ The output facilitates rapid, data-driven hiring decisions based on spoken Engli
 - Google API key with access to Gemini Pro model
 - FFmpeg installed locally if running outside Docker
 
+
+
 ### Installation (Local)
 
 1. Clone the repository:
@@ -77,6 +79,7 @@ The output facilitates rapid, data-driven hiring decisions based on spoken Engli
 git clone https://github.com/yourusername/accent-analyzer.git
 cd accent-analyzer
 ````
+```
 
 2. Install dependencies:
 
@@ -86,14 +89,24 @@ pip install -r requirements.txt
 
 3. Create a `.env` file and add your Google API key:
 
+4. Login to Hugging Face:
+```bash
+huggingface-cli login
+```
+(Follow the prompts to provide your Hugging Face token)
+
+5. Create a `.env` file and add your Google API key:
+
 ```env
 GOOGLE_API_KEY=your_google_api_key_here
+LANGSMITH_API_KEY=your_langsmith_key_here
+HUGGINGFACE_TOKEN=your_hg_token_here
 ```
 
-4. Run the FastAPI app:
+6. Run the FastAPI app:
 
 ```bash
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ---
@@ -186,7 +199,10 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-*Built with 💡 by a senior developer focused on clean, scalable, and maintainable code.*
+*Built by Halil Ibrahim*
 
 ```
 ```
+
+
+<div align="center"> <img src="https://komarev.com/ghpvc/?username=halilibr&color=blue&label=VISITORS" /> </div>

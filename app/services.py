@@ -2,19 +2,21 @@ import os
 import torch
 import torchaudio
 import whisper
-from dotenv import load_dotenv
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
 from transformers import pipeline
 from langsmith import Client
 
-
 WHISPER_MODEL = whisper.load_model("base.en")
 
+from dotenv import load_dotenv
 load_dotenv()
+
+os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+print("GOogle API Key:", GOOGLE_API_KEY)
 
 accent_pipe = pipeline(
     "audio-classification", 
@@ -40,24 +42,26 @@ def classify_accent(audio_path: str) -> dict:
 
 
 def summarize_text(text: str) -> str:
+
     # Initialize LangSmith client
     client = Client()
 
-    # Pull the prompt from LangSmith cloud (replace "summarize-transcript" with your actual prompt name/id)
-    prompt = client.pull_prompt("summarize-transcript")
+    # Pull the prompt from LangSmith cloud 
+    prompt = client.pull_prompt("halilibr/sumarization-case-study")
 
     # Initialize the Gemini model
     llm = ChatGoogleGenerativeAI(
-        model="gemini-2.0-flash",
-        temperature=0,
-        max_tokens=None,
-        timeout=None,
-        max_retries=2,
-        google_api_key=GOOGLE_API_KEY,
+        model="models/gemini-1.5-flash-latest",
+        temperature=0.3,
+        google_api_key="AIzaSyCVtmS6Z-MGRbfiwKZleGDj4_vy1N3eDaQ"
     )
 
+    print("LLM: ", llm)
+    chat_prompt_template = ChatPromptTemplate.from_template(prompt.template)
+    print("TEMPLATE: ", chat_prompt_template)
+    
     # Combine the prompt and model into a chain
-    chain = prompt | llm
+    chain = chat_prompt_template | llm 
 
     # Invoke the chain with the text to summarize
     response = chain.invoke({"text": text})
