@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+moviepy
+requests
+python-dotenv
+torchaudio
+transformers
+openai-whisper
+langchain
+langchain-google-genai
+pydantic
+aiofiles
+aiohttp
